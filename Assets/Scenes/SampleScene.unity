@@ -5628,6 +5628,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2790846108219030632, guid: 465da1490f6953b4188de6a0065126a6, type: 3}
   m_PrefabInstance: {fileID: 1322892222}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1359778866 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2970403033602021299, guid: eb4281c352597704aac22ea9cc9f2ad8, type: 3}
+  m_PrefabInstance: {fileID: 5953046527111175451}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaaaec16d4261c2499573b0f2c7f157e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1368264172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6062,6 +6073,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7452397162797806039, guid: 9ee507feb62338341824ec623c7ae7f1, type: 3}
   m_PrefabInstance: {fileID: 1490831793}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1496085545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4320072249724613079, guid: eb4281c352597704aac22ea9cc9f2ad8, type: 3}
+  m_PrefabInstance: {fileID: 5953046527111175451}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaaaec16d4261c2499573b0f2c7f157e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1500813657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8390,6 +8412,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 739777766170808882, guid: eb4281c352597704aac22ea9cc9f2ad8, type: 3}
+      propertyPath: playerRun
+      value: 
+      objectReference: {fileID: 1496085545}
     - target: {fileID: 5341016117043998955, guid: eb4281c352597704aac22ea9cc9f2ad8, type: 3}
       propertyPath: m_Name
       value: Mario
@@ -8434,6 +8460,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9101355980375858738, guid: eb4281c352597704aac22ea9cc9f2ad8, type: 3}
+      propertyPath: playerRun
+      value: 
+      objectReference: {fileID: 1359778866}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
