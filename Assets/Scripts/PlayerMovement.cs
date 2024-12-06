@@ -1,4 +1,5 @@
 ﻿
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
@@ -44,6 +45,21 @@ public class PlayerMovement : MonoBehaviour
         velocity.x = Mathf.MoveTowards(velocity.x, inputAxis * moveSpeed, moveSpeed * Time.deltaTime); 
         // Sau khi su dung MoveToward thì velocity.x = inputAxis * moveSpeed    
         // Sử dụng hàm MoveTowards để thay đổi vẫn tốc từ từ, tránh sự thay đổi đột ngột và giúp chuyển động mượt mà hơn
+
+        if (rigidbody2D.Raycast(Vector2.right * velocity.x))
+        {
+            velocity.x = 0;
+        }
+
+        if (velocity.x > 0)
+        {
+            transform.eulerAngles = Vector3.zero;
+        }
+        else if (velocity.x < 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        
     }
 
     private void GroundedMovement()
@@ -83,6 +99,19 @@ public class PlayerMovement : MonoBehaviour
         
         rigidbody2D.MovePosition(position);
         // Sử dụng rigidbody2D thay vì chỉnh trực tiếp Transform đảm bảo nhân vật tuân theo những định luật vật lý của Unity
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer != LayerMask.NameToLayer("PowerUp"))
+        {
+            //velocity.y = 0f;
+            if (transform.DotTest(collision.transform, Vector2.up))
+            {
+                velocity.y = 0f;
+            }
+        }
         
     }
 }
