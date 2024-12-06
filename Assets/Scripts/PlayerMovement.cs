@@ -1,5 +1,4 @@
 ﻿
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,7 +14,10 @@ public class PlayerMovement : MonoBehaviour
     
     public bool isGrounded {get; private set;}
     public bool isJumping {get; private set;}
-        
+    public bool isRunning => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis) > 0.25f;
+    public bool isSliding => (inputAxis > 0 && velocity.x < 0) || (inputAxis < 0 && velocity.x > 0);
+    // Phanh
+    
     private float inputAxis;
     private Vector2 velocity;
 
