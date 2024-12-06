@@ -8,15 +8,26 @@ public class PlayerSpriteRenderer : MonoBehaviour
     public Sprite playerIdle;
     public Sprite playerJump;
     public Sprite playerSlide;
-    public Sprite playerRun;
+    public AnimatedSprite playerRun;
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerMovement = GetComponentInParent<PlayerMovement>();
     }
 
+    private void OnEnable()
+    {
+        spriteRenderer.enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        spriteRenderer.enabled = false;
+    }
     private void LateUpdate()
     {
+        playerRun.enabled = playerMovement.isRunning;
+        
         if (playerMovement.isJumping)
         {
             spriteRenderer.sprite = playerJump;
@@ -25,11 +36,7 @@ public class PlayerSpriteRenderer : MonoBehaviour
         {
             spriteRenderer.sprite = playerSlide; 
         } 
-        else if (playerMovement.isRunning)
-        {
-            spriteRenderer.sprite = playerRun; 
-        } 
-        else
+        else if (!playerMovement.isRunning) 
         {
             spriteRenderer.sprite = playerIdle;
         }
