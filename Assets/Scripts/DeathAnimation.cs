@@ -13,7 +13,7 @@ public class DeathAnimation : MonoBehaviour
     }
 
     private void OnEnable()
-    {
+    { 
         UpdateSprite();
         DisablePhysics();
         StartCoroutine(Animate());
@@ -23,12 +23,10 @@ public class DeathAnimation : MonoBehaviour
     {
         spriteRenderer.enabled = true;
         spriteRenderer.sortingOrder = 10;
-
         if (deadSprite != null)
         {
             spriteRenderer.sprite = deadSprite;
-        }
-        
+        }  
     }
 
     // Tắt hệ thống vật lý khi thực hiện hoạt ảnh chết.
