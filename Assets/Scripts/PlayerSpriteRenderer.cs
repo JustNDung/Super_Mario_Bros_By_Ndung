@@ -23,6 +23,7 @@ public class PlayerSpriteRenderer : MonoBehaviour
     private void OnDisable()
     {
         spriteRenderer.enabled = false;
+        playerRun.enabled = false;
     }
     
     // LateUpdate được gọi mỗi cuối frame

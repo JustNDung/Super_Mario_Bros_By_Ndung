@@ -1,4 +1,4 @@
-using System.Security.Cryptography;
+
 using UnityEngine;
 
 public class EntityMovement : MonoBehaviour
@@ -6,7 +6,7 @@ public class EntityMovement : MonoBehaviour
     public float speed = 1f;
     public Vector2 direction = Vector2.left;
     
-    private new Rigidbody2D rigidbody2d;
+    private Rigidbody2D rigidbody2d;
     private Vector2 velocity; 
 
     private void Awake()
