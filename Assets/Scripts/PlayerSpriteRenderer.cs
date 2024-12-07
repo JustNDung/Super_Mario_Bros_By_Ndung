@@ -24,6 +24,8 @@ public class PlayerSpriteRenderer : MonoBehaviour
     {
         spriteRenderer.enabled = false;
     }
+    
+    // LateUpdate được gọi mỗi cuối frame
     private void LateUpdate()
     {
         playerRun.enabled = playerMovement.isRunning;
