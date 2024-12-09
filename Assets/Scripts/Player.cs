@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     public SpriteRenderer bigRenderer;
     
     private DeathAnimation deathAnimation;
+    
+    [SerializeField] float resetLevelAfterSeconds = 3f;
 
     public bool big => bigRenderer.enabled;
     public bool small => smallRenderer.enabled;
@@ -39,7 +41,7 @@ public class Player : MonoBehaviour
         bigRenderer.enabled = false;
         deathAnimation.enabled = true;
         
-        GameManager.instance.ResetLevel(3f);
+        GameManager.instance.ResetLevel(resetLevelAfterSeconds);
         // Thời gian reset phải bằng với thời gian thực hienej của deathAnimation
     }
 }

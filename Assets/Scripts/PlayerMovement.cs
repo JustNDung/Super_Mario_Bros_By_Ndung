@@ -1,5 +1,7 @@
 ﻿
 using UnityEngine;
+using UnityEngine.UIElements;
+
 public class PlayerMovement : MonoBehaviour
 {
     private new Camera camera;
@@ -8,6 +10,10 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 8f;
     public float maxJumpHeight = 5f;
     public float maxJumpTime = 1f;
+
+    [SerializeField] float mutiplerIfFalling = 2f;
+    [SerializeField] float mutiplerIfNotFalling = 1f;
+        
     // maxJumpTime là tổng thời gian đi len và thời gian đi xuống.
     public float jumpForce => (2f * maxJumpHeight) / (maxJumpTime / 2f); 
     public float gravity => (-2f * maxJumpHeight) / Mathf.Pow((maxJumpTime / 2f), 2);
@@ -80,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     {
         bool falling = velocity.y < 0 || !Input.GetButton("Jump");
 
-        float multiplier = falling ? 2f : 1f;
+        float multiplier = falling ? mutiplerIfFalling : mutiplerIfNotFalling;
         velocity.y += gravity * multiplier * Time.deltaTime;
         velocity.y = Mathf.Max(velocity.y, gravity / 2f);
     }

@@ -6,6 +6,8 @@ public class DeathAnimation : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite deadSprite;
 
+    private int sortingOrderLyer = 10;
+
     // Khi nhấn Reset trong Inspector, tự động gán spriteRenderer với thành phần SpriteRenderer trên cùng đối tượng.
     private void Reset()
     {
@@ -22,7 +24,7 @@ public class DeathAnimation : MonoBehaviour
     private void UpdateSprite()
     {
         spriteRenderer.enabled = true;
-        spriteRenderer.sortingOrder = 10;
+        spriteRenderer.sortingOrder = sortingOrderLyer;
         if (deadSprite != null)
         {
             spriteRenderer.sprite = deadSprite;

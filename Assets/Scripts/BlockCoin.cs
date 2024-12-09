@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BlockCoin : MonoBehaviour
 {
+    private float height = 2f;
     private void Start()
     {
         GameManager.instance.AddCoin();
@@ -13,7 +14,7 @@ public class BlockCoin : MonoBehaviour
     {
         // TODO
         Vector3 restingPosition = transform.localPosition;
-        Vector3 animatedPosition = restingPosition + Vector3.up * 2f;
+        Vector3 animatedPosition = restingPosition + Vector3.up * height;
         
         yield return Move(restingPosition, animatedPosition);
         yield return Move(animatedPosition, restingPosition);

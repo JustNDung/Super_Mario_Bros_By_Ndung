@@ -4,6 +4,9 @@ public class Goomba : MonoBehaviour
 {
     public Sprite flatSprite;
 
+    [SerializeField] float flattenAfter = 0.5f;
+    [SerializeField] float destroyAfter = 3f;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -35,7 +38,7 @@ public class Goomba : MonoBehaviour
         GetComponent<AnimatedSprite>().enabled = false; 
         GetComponent<SpriteRenderer>().sprite = flatSprite;
         
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, flattenAfter);
         // Destroy gameObject after 0.5s
     }
 
@@ -43,7 +46,7 @@ public class Goomba : MonoBehaviour
     {
         GetComponent<AnimatedSprite>().enabled = false;
         GetComponent<DeathAnimation>().enabled = true;
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, destroyAfter);
     }
     
     
