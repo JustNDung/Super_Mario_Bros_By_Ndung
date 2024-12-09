@@ -8,6 +8,8 @@ public class Koopa : MonoBehaviour
     private bool shelled;
     private bool pushed;
     
+    [SerializeField] float destroyAfterSeconds = 3f;
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -73,7 +75,7 @@ public class Koopa : MonoBehaviour
     {
         GetComponent<AnimatedSprite>().enabled = false;
         GetComponent<DeathAnimation>().enabled = true;
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, destroyAfterSeconds);
     }
 
     private void OnBecameInvisible()

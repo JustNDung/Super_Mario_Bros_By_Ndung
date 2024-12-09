@@ -4,7 +4,10 @@ using UnityEngine;
 public class BlockHit : MonoBehaviour
 {
     public GameObject item;
+    
     public int maxHits = -1;
+    private float height = 0.5f;
+    
     public Sprite emptyBlock;
     private bool animating;
     private void OnCollisionEnter2D(Collision2D collision)
@@ -41,7 +44,7 @@ public class BlockHit : MonoBehaviour
         animating = true;
         // TODO
         Vector3 restingPosition = transform.localPosition;
-        Vector3 animatedPosition = restingPosition + Vector3.up * 0.5f;
+        Vector3 animatedPosition = restingPosition + Vector3.up * height;
         
         yield return Move(restingPosition, animatedPosition);
         yield return Move(animatedPosition, restingPosition);

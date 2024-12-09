@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; private set;}
     // Trong Unity thì làm như này là phổ biến và phuf hợp với cách Unity quản lí đối tượng.
     
+    [SerializeField] int maxLives = 3;
+    [SerializeField] int coinsToAddLife = 100;
+    [SerializeField] int maxStages = 10;
+    
     public int world { get; private set; }
     public int stage { get; private set; }
     public int lives { get; private set; }
@@ -43,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void NewGame()
     {
-        lives = 3;
+        lives = maxLives;
         coins = 0;
         LoadLevel(1, 1);
     }
@@ -58,7 +62,7 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        if (world == 1 && stage == 10)
+        if (world == 1 && stage == maxStages)
         {
             LoadLevel(world + 1, 1);
         }
@@ -93,7 +97,7 @@ public class GameManager : MonoBehaviour
     public void AddCoin()
     {
         coins += 1;
-        if (coins == 100)
+        if (coins == coinsToAddLife)
         {
             AddLife();
             coins = 0;
