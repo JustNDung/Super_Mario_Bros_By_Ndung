@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -16,22 +17,28 @@ public class Player : MonoBehaviour
     public bool big => bigRenderer.enabled;
     public bool small => smallRenderer.enabled;
     public bool death => deathAnimation.enabled;
+    public bool starpower { get; private set; }
     
     private void Awake()
     {
         deathAnimation = GetComponent<DeathAnimation>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        
+        activeSpriteRenderer = smallRenderer;
     }
 
     public void Hit()
     {
-        if (big)
+        if (!starpower && !death)
         {
-            Shrink();
-        }
-        else
-        {
-            Death();
+            if (big)
+            {
+                Shrink();
+            }
+            else
+            {
+                Death();
+            }
         }
     }
 
@@ -90,5 +97,31 @@ public class Player : MonoBehaviour
         smallRenderer.enabled = false;
         bigRenderer.enabled = false;
         activeSpriteRenderer.enabled = true;
+    }
+
+    public void Starpower(float duration)
+    {
+        StartCoroutine(StarpowerAnimation(duration));
+    }
+
+    private IEnumerator StarpowerAnimation(float duration)
+    {
+        starpower = true;
+        
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            if (Time.frameCount % 4 == 0)
+            {
+                activeSpriteRenderer.spriteRenderer.color = Random.ColorHSV(0f, 1f, 1f, 1f, 1f, 1f);
+            }
+
+            yield return null;
+        }
+        
+        activeSpriteRenderer.spriteRenderer.color = Color.white;
+        starpower = false;
     }
 }

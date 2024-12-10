@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+
+    [SerializeField] float starpowerDuration = 10f;
     public enum Type
     {
         Coin,
@@ -34,7 +36,7 @@ public class PowerUp : MonoBehaviour
                 player.GetComponent<Player>().Grow();
                 break;
             case Type.StarPower:
-
+                player.GetComponent<Player>().Starpower(starpowerDuration);
                 break;
                 
         }
