@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BlockCoin : MonoBehaviour
 {
-    private float height = 2f;
+    private float height = 2f; 
     private void Start()
     {
         GameManager.instance.AddCoin();
