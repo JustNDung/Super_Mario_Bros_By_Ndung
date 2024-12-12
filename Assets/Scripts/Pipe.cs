@@ -1,5 +1,6 @@
 
 using System.Collections;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class Pipe : MonoBehaviour
@@ -14,7 +15,7 @@ public class Pipe : MonoBehaviour
         {
             if (Input.GetKeyDown(enterKeyCode))
             {
-                StartCoroutine(Enter(other.transform));
+                StartCoroutine(Enter(other.transform) );
             }
             
         }
@@ -32,6 +33,9 @@ public class Pipe : MonoBehaviour
         
         yield return Move(player, enteredPosition, enteredScale);
         yield return new WaitForSeconds(1f);
+
+        bool underground = connection.position.y < -3f;
+        Camera.main.GetComponent<SlideScrolling>().SetUnderground(underground);
 
         if (exitDirection != Vector3.zero)
         {
