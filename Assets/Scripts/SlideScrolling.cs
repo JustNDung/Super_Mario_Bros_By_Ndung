@@ -3,6 +3,8 @@ using UnityEngine;
 public class SlideScrolling : MonoBehaviour
 {
     private Transform player;
+    public float height = 2f;
+    public float undergroundHeight = -24f;
 
     private void Awake()
     {
@@ -15,6 +17,13 @@ public class SlideScrolling : MonoBehaviour
         cameraPos.x = Mathf.Max(cameraPos.x, player.position.x);
         //cameraPos.x = player.position.x;
         transform.position = cameraPos;
-    } 
+    }
+
+    public void SetUnderground(bool underground)
+    {
+        Vector3 cameraPos = transform.position;
+        cameraPos.y = underground ? undergroundHeight : height;
+        transform.position = cameraPos;
+    }
     
 }
