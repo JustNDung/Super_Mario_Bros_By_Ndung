@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private new Camera camera;
     private new Rigidbody2D rigidbody2D;
+    private Collider2D collider2D;
     
     public float moveSpeed = 8f;
     public float maxJumpHeight = 5f;
@@ -30,7 +31,24 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        collider2D = GetComponent<Collider2D>();
         camera = Camera.main;
+    }
+
+    private void OnEnable()
+    {
+        rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        collider2D.enabled = true;
+        velocity = Vector2.zero;
+        isJumping = false;
+    }
+
+    private void OnDisable()
+    {
+        rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+        collider2D.enabled = false;
+        velocity = Vector2.zero;
+        isJumping = false;
     }
 
     private void Update()
