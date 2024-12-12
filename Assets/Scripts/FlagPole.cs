@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class FlagPole : MonoBehaviour
@@ -8,6 +9,8 @@ public class FlagPole : MonoBehaviour
     public Transform poleBottom;
     public Transform castle;
     public float speed = 6f;
+    public int nextWorld = 1;
+    public int nextStage = 1;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -27,6 +30,10 @@ public class FlagPole : MonoBehaviour
         yield return MoveTo(player, castle.position);
         
         player.gameObject.SetActive(false);
+        
+        yield return new WaitForSeconds(2f);
+        
+        GameManager.instance.LoadLevel(nextWorld, nextStage);
     }
 
     private IEnumerator MoveTo(Transform subject, Vector3 destination)
